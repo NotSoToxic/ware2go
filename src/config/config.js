@@ -97,5 +97,15 @@ const CONFIG = {
     }
   };
   
+  // Client-side only (public but restricted)
+  export const CLIENT_CONFIG = {
+    GOOGLE_MAPS_API_KEY: import.meta.env.VITE_GOOGLE_MAPS_API_KEY
+  };
+  
+  // Server-side only (private)
+  export const SERVER_CONFIG = {
+    GOOGLE_MAPS_SERVER_KEY: process.env.GOOGLE_MAPS_SERVER_KEY
+  };
+  
   export default CONFIG;
   

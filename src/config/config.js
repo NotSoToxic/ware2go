@@ -73,7 +73,7 @@ const CONFIG = {
         transportOptions: ["truck", "train"]
       }
     ],
-    GOOGLE_MAPS_API_KEY: import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
+    GOOGLE_MAPS_API_KEY: process.env.GOOGLE_MAPS_API_KEY || import.meta.env.VITE_GOOGLE_MAPS_API_KEY,
     GEMINI_API_KEY: import.meta.env.VITE_GEMINI_API_KEY,
     TRANSPORT_COSTS: {
       truck: {

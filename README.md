@@ -1,21 +1,38 @@
 Project Structure:
-
+```bash
 /Ware2Go
-│── /public
-│── /src
-│   │── /components
-│   │   │── MapView.jsx
-│   │   │── WarehouseRequestForm.jsx
-│   │   │── RouteOptimizer.jsx
-│   │── /pages
-│   │   │── Home.jsx
-│   │   │── RequestForm.jsx
-│   │   │── Results.jsx
-│   │── /config
-│   │   │── config.js
-│   │── App.jsx
-│   │── main.jsx
-│── .env
-│── eslint.config.js
-│── package.json
-│── vite.config.js
+├── .idx/
+│   ├── 📜 dev.nix
+│   └── 📜 integrations.json
+├── public/
+│   └── 🖼️ vite.svg
+├── src/
+│   ├── components/
+│   │   ├── 🗺️ MapComponent.jsx
+│   │   ├── 🌍 MapView.jsx
+│   │   ├── 🧭 Navigation.jsx
+│   │   ├── 🗺️ RouteMap.jsx
+│   │   ├── 🔄 RouteOptimizer.jsx
+│   │   ├── 🏢 WarehouseDashboard.jsx
+│   │   └── 📝 WarehousRequestForm.jsx
+│   ├── config/
+│   │   └── ⚙️ config.js
+│   ├── pages/
+│   │   ├── 🏠 Home.jsx
+│   │   ├── 📝 RequestForm.jsx
+│   │   └── 📊 Results.jsx
+│   ├── 🎨 App.css
+│   ├── 🖥️ App.jsx
+│   ├── 🎨 index.css
+│   ├── 🚀 main.jsx
+│   └── 🎨 pages.css
+├── 🔒 .env
+├── 📜 .gitignore
+├── 🔍 eslint.config.js
+├── 📄 index.html
+├── 📦 package-lock.json
+├── 📦 package.json
+├── 📖 README.md
+├── 🌐 server.js
+└── ⚡ vite.config.js
+```

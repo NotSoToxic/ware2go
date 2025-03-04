@@ -1,37 +1,48 @@
 import React, { useEffect, useState } from 'react';
-import { CONFIG } from '../config/config.js'; // Updated import
+import CONFIG from '../config/config.js';
 
 function RouteOptimizer({ requestData, warehouses }) {
   const [route, setRoute] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     async function fetchOptimizedRoute() {
-      try {
-        const response = await fetch('https://api.gemini.com/optimize-route', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${CONFIG.GEMINI_API_KEY}`,
-          },
-          body: JSON.stringify({ requestData, warehouses }),
-        });
+      if (!requestData || !warehouses.length) return;
 
+      const waypointsString = warehouses
+        .map(wh => `via:${wh.lat},${wh.lng}`)
+        .join('|');
+
+      const apiUrl = `https://maps.googleapis.com/maps/api/directions/json?origin=${requestData.origin}&destination=${requestData.destination}&waypoints=${waypointsString}&key=${CONFIG}`;
+
+      try {
+        const response = await fetch(apiUrl);
         const data = await response.json();
-        setRoute(data.optimizedRoute);
-      } catch (error) {
-        console.error("Error fetching optimized route:", error);
+
+        if (data.status === "OK") {
+          setRoute(data.routes[0]); // Extract the first optimal route
+        } else {
+          throw new Error(data.error_message || "Failed to fetch route");
+        }
+      } catch (err) {
+        setError(err.message);
+        console.error("Error fetching optimized route:", err);
       }
     }
 
-    if (requestData) {
-      fetchOptimizedRoute();
-    }
+    fetchOptimizedRoute();
   }, [requestData, warehouses]);
 
   return (
     <div>
       <h2>Optimized Route</h2>
-      {route ? <p>{JSON.stringify(route)}</p> : <p>Loading...</p>}
+      {error ? (
+        <p>Error: {error}</p>
+      ) : route ? (
+        <pre>{JSON.stringify(route, null, 2)}</pre>
+      ) : (
+        <p>Loading...</p>
+      )}
     </div>
   );
 }

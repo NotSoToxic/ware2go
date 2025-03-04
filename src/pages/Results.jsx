@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { CONFIG } from '../config/config.js';
+import CONFIG from '../config/config.js';
 import RouteOptimizer from '../components/RouteOptimizer';
 
 function Results() {

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {CONFIG} from '../config/config.js';
+import CONFIG from '../config/config.js';
 
 function RequestForm() {
   const [request, setRequest] = useState({

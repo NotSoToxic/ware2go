@@ -46,7 +46,6 @@ async function getCoordinates(location) {
     throw error;
   }
 }
-
 // Helper function to calculate distance between two points
 function calculateDistance(lat1, lon1, lat2, lon2) {
   const R = 6371; // Radius of the earth in km
